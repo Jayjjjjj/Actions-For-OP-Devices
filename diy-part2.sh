@@ -17,7 +17,7 @@ sed -i 's/192.168.1.1/192.168.100.1/g' package/base-files/files/bin/config_gener
 sed -i 's/luci-theme-bootstrap/luci-theme-argon/g' feeds/luci/collections/luci/Makefile
 
 # Modify hostname
-sed -i 's/ImmortalWrt/ImmortalWrt-24.10-5.4-PW-WG-$(shell TZ="Asia/Shanghai" date +"%Y%m%d")/g' package/base-files/files/bin/config_generate
+sed -i 's/ImmortalWrt/ImmortalWrt-24.10-5.4-$(shell TZ="Asia/Shanghai" date +"%Y%m%d")/g' package/base-files/files/bin/config_generate
 
 # Modify filename, add date prefix
-sed -i 's|IMG_PREFIX:=|IMG_PREFIX:=$(shell TZ="Asia/Shanghai" date +"%Y%m%d")-PW-WG-24.10-5.4-|' include/image.mk
+sed -i 's|IMG_PREFIX:=$(VERSION_DIST_SANITIZED)-$(IMG_PREFIX_VERNUM)$(IMG_PREFIX_VERCODE)$(IMG_PREFIX_EXTRA)$(BOARD)-$(SUBTARGET)|IMG_PREFIX:=$(VERSION_DIST_SANITIZED)-2410-5.4-$(shell TZ="Asia/Shanghai" date +"%Y%m%d")-$(SUBTARGET)|' include/image.mk
